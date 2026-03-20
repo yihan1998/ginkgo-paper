@@ -1,9 +1,13 @@
-Modern systems are becoming increasingly heterogeneous in hardware.
+Modern computing systems are increasingly heterogeneous, combining CPUs, GPUs, FPGAs, and other specialized hardware with distinct performance characteristics.
 
-Yet programming on heterogeneous systems remains daunting for software developers, who often lack the means to reason about how their design choices will affect performance on diverse architectures.
+Yet programming on heterogeneous systems remains daunting for software developers,  who often lack the means to understand how their design choices will affect performance on diverse architectures.
 
-Prior works attemp to tackle this challenge in two separate landscapes: static compile-time reasoning and dynamic runtime prediction.
+Prior work has largely attempted to tackle this challenge in two separate landscapes:
+\textit{static compile-time reasoning} and \textit{dynamic runtime prediction}.
+Static approaches help developers reason about performance before execution, such as compiler cost models~\cite{}, analytical models~\cite{}, and autotuning~\cite{}. 
+Runtime approaches predict behavior under real workloads, such as simulation~\cite{}, profiling~\cite{}, and machine learning-based modeling~\cite{}. 
+While some techniques such as profile-guided optimization~\cite{} and JIT compilation~\cite{} feed runtime observations back into the compiler, they optimize performance based on empirical observations rather than reasoning it via a principled model.
 
-% Prior work has largely  this challenge in two separate landscapes: static compile-time reasoning and dynamic runtime prediction. Static approaches help developers reason about performance before execution, such as compiler cost models [cite], analytical models [cite], and autotuning [cite]. Runtime approaches predict behavior under real workloads, such as simulation [cite], profiling [cite], and machine learning-based modeling [cite]. Some techniques bridge the two, notably profile-guided optimization [cite] and JIT compilation [cite], which feed runtime observations back into the compiler. However, these approaches optimize code transparently rather than helping developers reason about the performance implications of their design choices on heterogeneous hardware.
-
-In this paper, we present \sysname, a system that unifies these two perspectives by providing a framework for performance prediction on heterogeneous systems.
+In this paper, we present \sysname{}, a compiler framework that models and predicts program performance across heterogeneous architectures during compilation.
+Our key insight is that performance reasoning should be transparent to developers in the compilation phase.
+Like an open kitchen, \sysname{} makes the compiler's performance analysis visible, enabling developers to observe, understand, and act on how their design choices affect execution on diverse hardware.
